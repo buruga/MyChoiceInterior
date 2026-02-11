@@ -1,0 +1,69 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Testimonial {
+  id: number;
+  name: string;
+  company: string;
+  message: string;
+  rating: number;
+}
+
+@Component({
+  selector: 'app-testimonials',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <section id="testimonials" class="testimonials section bg-light">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Client Testimonials</h2>
+          <p class="section-subtitle">What our clients say about us</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+            <div class="rating">
+              <span *ngFor="let star of getStars(testimonial.rating)" class="star">⭐</span>
+            </div>
+            <p class="testimonial-message">"{{ testimonial.message }}"</p>
+            <div class="testimonial-author">
+              <h4>{{ testimonial.name }}</h4>
+              <p>{{ testimonial.company }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `,
+  styleUrls: ['./testimonials.component.scss']
+})
+export class TestimonialsComponent {
+  testimonials: Testimonial[] = [
+    {
+      id: 1,
+      name: 'Syam Kumar',
+      company: 'BuildWell Lotus Appartments, Hyderabad',
+      message: 'MyChoiceInterior exceeded our expectations. Their team delivered our project on time and with exceptional quality.',
+      rating: 5
+    },
+    {
+      id: 2,
+      name: 'Novak Djokovic',
+      company: 'Madhapur, Hyderabad',
+      message: 'Professional, responsive, and incredibly talented workers. Highly recommended for any interior design project.',
+      rating: 5
+    },
+    {
+      id: 3,
+      name: 'First Office',
+      company: 'Hitech City, Hyderabad',
+      message: 'The user experience they designed was outstanding. Our customers love the new designs.',
+      rating: 5
+    }
+  ];
+
+  getStars(rating: number): number[] {
+    return Array(rating).fill(0);
+  }
+}
