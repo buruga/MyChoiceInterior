@@ -42,21 +42,21 @@ export class TestimonialsComponent {
   testimonials: Testimonial[] = [
     {
       id: 1,
-      name: 'Syam Kumar',
-      company: 'BuildWell Lotus Appartments, Hyderabad',
+      name: 'Sri Ram',
+      company: 'Hyderabad',
       message: 'MyChoiceInterior exceeded our expectations. Their team delivered our project on time and with exceptional quality.',
       rating: 5
     },
     {
       id: 2,
-      name: 'Novak Djokovic',
+      name: 'Pawan Kumar',
       company: 'Madhapur, Hyderabad',
       message: 'Professional, responsive, and incredibly talented workers. Highly recommended for any interior design project.',
       rating: 5
     },
     {
       id: 3,
-      name: 'First Office',
+      name: 'Sukumar',
       company: 'Hitech City, Hyderabad',
       message: 'The user experience they designed was outstanding. Our customers love the new designs.',
       rating: 5
