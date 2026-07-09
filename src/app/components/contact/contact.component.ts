@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-contact',
   standalone: true,
@@ -23,7 +24,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="info-item">
               <strong>📧 Email:</strong>
-              <p><a href="mailto:info&#64;mychoiceinterior.com">info&#64;mychoiceinterior.com</a></p>
+              <p><a href="mailto:buruga.prasad&#64;gmail.com">info&#64;mychoiceinterior.com</a></p>
             </div>
             <div class="info-item">
               <strong>📱 Phone:</strong>
@@ -31,7 +32,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="info-item">
               <strong>🕐 Hours:</strong>
-              <p>Monday - Friday: 9:00 AM - 6:00 PM IST</p>
+              <p>Monday - SaturDay: 9:00 AM - 6:00 PM IST</p>
             </div>
           </div>
 
@@ -59,6 +60,16 @@ import { FormsModule } from '@angular/forms';
             <div class="form-group">
               <input 
                 type="text" 
+                placeholder="Phone Number" 
+                [(ngModel)]="formData.phone"
+                name="phone"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <input 
+                type="text" 
                 placeholder="Subject" 
                 [(ngModel)]="formData.subject"
                 name="subject"
@@ -77,7 +88,7 @@ import { FormsModule } from '@angular/forms';
             </div>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
-            <p *ngIf="submitted" class="form-success">Thank you! We'll get back to you soon.</p>
+            <p *ngIf="submitted" class="form-success">{{ successMessage }}</p>
           </form>
         </div>
       </div>
@@ -86,25 +97,87 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+  private readonly googleSheetUrl = 'https://script.google.com/macros/s/AKfycbzU9uVUAsX54zRiRZrcC7K0X3UWZrE1MsFcF0bxzkdvkzSgRVI-hiTAqTxohHZ1MOivzA/exec';
+
   formData = {
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   };
 
   submitted = false;
+  successMessage = '';
 
-  onSubmit() {
-    if (this.formData.name && this.formData.email && this.formData.subject && this.formData.message) {
-      console.log('Form submitted:', this.formData);
+  async onSubmit() {
+    debugger;
+    if (!this.formData.name || !this.formData.email || !this.formData.phone || !this.formData.subject || !this.formData.message) {
+      this.successMessage = 'Please fill in all required fields.';
       this.submitted = true;
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
-        this.formData = { name: '', email: '', subject: '', message: '' };
         this.submitted = false;
+        this.successMessage = '';
       }, 3000);
+
+      return;
     }
+
+    const payload = {
+      name: this.formData.name.trim(),
+      email: this.formData.email.trim(),
+      phone: this.formData.phone.trim(),
+      subject: this.formData.subject.trim(),
+      message: this.formData.message.trim(),
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      await this.submitToGoogleAppsScript(payload);
+      this.handleSuccess();
+    } catch (error) {
+      console.error('Google Apps Script submission failed:', error);
+      this.handleFailure();
+    }
+  }
+
+  private async submitToGoogleAppsScript(payload: Record<string, string>) {
+    const response = await fetch(this.googleSheetUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: new URLSearchParams(payload),
+      mode: 'cors'
+    });
+
+    const text = await response.text();
+    debugger;
+    if (!response.ok) {
+      throw new Error(text || 'Google Apps Script request failed');
+    }
+  }
+
+  private handleSuccess() {
+    this.successMessage = 'Thank you! Your message has been submitted.';
+    this.submitted = true;
+
+    setTimeout(() => {
+      this.formData = { name: '', email: '', phone: '', subject: '', message: '' };
+      this.submitted = false;
+      this.successMessage = '';
+    }, 4000);
+  }
+
+  private handleFailure() {
+    this.successMessage = 'Your message could not be saved right now. Please try again in a moment.';
+    this.submitted = true;
+
+    setTimeout(() => {
+      this.formData = { name: '', email: '', phone: '', subject: '', message: '' };
+      this.submitted = false;
+      this.successMessage = '';
+    }, 4000);
   }
 }
