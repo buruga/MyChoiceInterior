@@ -97,7 +97,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  private readonly googleSheetUrl = 'https://script.google.com/macros/s/AKfycbzU9uVUAsX54zRiRZrcC7K0X3UWZrE1MsFcF0bxzkdvkzSgRVI-hiTAqTxohHZ1MOivzA/exec';
+  private readonly googleSheetUrl = 'https://script.google.com/macros/s/AKfycbxaGD-w5hzW0R7rRuw_gDFbL4eXya_pH5fI5U8J0sjr0e5za2Pv9O4sIxGGLrMvt-AAJQ/exec';
 
   formData = {
     name: '',
@@ -111,7 +111,6 @@ export class ContactComponent {
   successMessage = '';
 
   async onSubmit() {
-    debugger;
     if (!this.formData.name || !this.formData.email || !this.formData.phone || !this.formData.subject || !this.formData.message) {
       this.successMessage = 'Please fill in all required fields.';
       this.submitted = true;
@@ -143,19 +142,18 @@ export class ContactComponent {
   }
 
   private async submitToGoogleAppsScript(payload: Record<string, string>) {
+    const formBody = new URLSearchParams(payload);
+
     const response = await fetch(this.googleSheetUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      },
-      body: new URLSearchParams(payload),
-      mode: 'cors'
+      body: formBody,
+      mode: 'no-cors'
     });
 
-    const text = await response.text();
-    debugger;
-    if (!response.ok) {
-      throw new Error(text || 'Google Apps Script request failed');
+    console.log(response);
+    // In no-cors mode the response is opaque; reaching here means the browser sent the request.
+    if (!response) {
+      throw new Error('Google Apps Script request failed');
     }
   }
 
