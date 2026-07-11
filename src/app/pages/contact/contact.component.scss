@@ -65,6 +65,25 @@ input.err, .field input.err { border-color: var(--clr-terracotta); }
 .info-list span { width: 84px; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding-top: 2px; }
 .info-list a { color: #fff; font-weight: 600; }
 .info-list a:hover { color: var(--clr-gold-soft); }
+.contact-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+}
+.contact-actions a:last-child {
+  color: var(--clr-gold-soft);
+}
+.wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.wa-link svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
 .info-sub { color: #fff; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: var(--sp-4); }
 .office-list { display: flex; flex-direction: column; gap: var(--sp-4); }
 .office-list li { display: flex; flex-direction: column; gap: 2px; padding-bottom: var(--sp-3); border-bottom: 1px solid rgba(255,255,255,0.1); }

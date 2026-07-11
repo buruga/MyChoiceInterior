@@ -91,6 +91,11 @@
 .site-header:not(.scrolled):not(.open) .nav-desktop a.active { color: #fff; }
 .site-header:not(.scrolled):not(.open) .call { color: #fff; }
 .site-header:not(.scrolled):not(.open) .call svg { color: var(--clr-gold-soft); }
+.site-header:not(.scrolled):not(.open) .whatsapp {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
 .site-header:not(.scrolled):not(.open) .burger span { background: #fff; }
 
 .actions { display: flex; align-items: center; gap: var(--sp-2); flex-shrink: 0; }
@@ -104,6 +109,28 @@
 }
 .call svg { color: var(--clr-gold-deep); flex-shrink: 0; }
 .call span { display: none; white-space: nowrap; }
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  background: rgba(22, 163, 74, 0.12);
+  color: #128c49;
+  line-height: 1;
+}
+
+.whatsapp svg,
+.nav-whatsapp svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
+
+.whatsapp:hover { background: rgba(22, 163, 74, 0.18); }
 
 .desktop-cta {
   padding: 0.55rem 1rem;
@@ -144,7 +171,15 @@
 @media (max-width: 1079px) {
   .nav-desktop { display: none; }
   .desktop-cta { display: none; }
-  .burger { display: flex; }
+  .burger {
+    display: flex;
+    margin-right: -0.35rem;
+  }
+  .actions {
+    justify-self: end;
+    margin-left: auto;
+  }
+  .whatsapp { display: none; }
 
   .nav-backdrop {
     position: fixed;
@@ -193,7 +228,27 @@
     font-size: 1rem;
     font-weight: 700;
     color: var(--clr-gold-deep);
-    border-bottom: none;
+  }
+
+  .nav-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: var(--sp-3);
+    padding: 0;
+    border: 1px solid rgba(22, 163, 74, 0.22);
+    border-radius: 999px;
+    background: rgba(22, 163, 74, 0.1);
+    font-size: 0;
+    color: #128c49;
+  }
+
+  .nav-whatsapp svg {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 
   .nav-cta {
@@ -212,6 +267,11 @@
   .site-header.open .brand .name em { color: var(--clr-gold-deep); }
   .site-header.open .call { color: var(--clr-ink); }
   .site-header.open .call svg { color: var(--clr-gold-deep); }
+  .site-header.open .whatsapp {
+    color: #128c49;
+    background: rgba(22, 163, 74, 0.12);
+    border-color: rgba(22, 163, 74, 0.25);
+  }
   .site-header.open .burger span { background: var(--clr-ink); }
 }
 

@@ -27,9 +27,22 @@
       <div class="col">
         <h4>Get in Touch</h4>
         <ul class="contact">
-          <li><a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a></li>
+          <li class="phone-links">
+            <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>
+            <a [href]="'https://wa.me/' + site.whatsapp" class="wa-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.4-1.4A9.8 9.8 0 1 0 12 2.2Zm0 17.8c-1.4 0-2.9-.4-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A8 8 0 1 1 12 20Z"/>
+                <path d="M16.7 13.9c-.3-.2-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1l-.5.7c-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.2-2.8c-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.2-.5s0-.3-.1-.5l-.8-1.9c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4s-1 1-.9 2.3c0 1.3.9 2.6 1 2.8.1.2 1.8 3 4.5 4.1 2.6 1.1 2.6.7 3.1.7s1.7-.7 1.9-1.4.2-1.2.2-1.3-.2-.2-.5-.4Z"/>
+              </svg>
+            </a>
+          </li>
           <li><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
-          <li><a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">WhatsApp us</a></li>
+          <li><a [href]="'https://wa.me/' + site.whatsapp" class="wa-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.4-1.4A9.8 9.8 0 1 0 12 2.2Zm0 17.8c-1.4 0-2.9-.4-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A8 8 0 1 1 12 20Z"/>
+              <path d="M16.7 13.9c-.3-.2-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1l-.5.7c-.1.2-.3.2-.6.1a6.7 6.7 0 0 1-3.2-2.8c-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.2-.5s0-.3-.1-.5l-.8-1.9c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4s-1 1-.9 2.3c0 1.3.9 2.6 1 2.8.1.2 1.8 3 4.5 4.1 2.6 1.1 2.6.7 3.1.7s1.7-.7 1.9-1.4.2-1.2.2-1.3-.2-.2-.5-.4Z"/>
+            </svg>
+          </a></li>
         </ul>
       </div>
 

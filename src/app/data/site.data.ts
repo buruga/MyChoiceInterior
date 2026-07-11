@@ -5,7 +5,7 @@ export const SITE: SiteInfo = {
   tagline: 'Interiors designed around the way you live.',
   phone: '+91 99639 94485',
   phone2: '+91 98662 45327',
-  email: 'hello@mychoiceinterior.in',
+  email: 'info@mychoiceinterior.com',
   whatsapp: '919963994485',
   director: 'G. Rajesh',
   socials: [

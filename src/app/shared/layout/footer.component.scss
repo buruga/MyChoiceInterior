@@ -41,6 +41,29 @@
 .col a { font-size: 0.92rem; transition: color 0.25s var(--ease); }
 .col a:hover { color: var(--clr-gold-soft); }
 .contact li { font-size: 0.92rem; line-height: 1.5; }
+.phone-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+}
+.phone-links a:last-child {
+  color: var(--clr-gold-soft);
+}
+.wa-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  color: var(--clr-gold-soft);
+}
+.wa-link svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
+}
 .muted { color: rgba(255, 255, 255, 0.45); font-size: 0.85rem; }
 
 .bottom {

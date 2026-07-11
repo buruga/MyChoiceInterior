@@ -15,7 +15,8 @@
         <div class="result-icon">✓</div>
         <h2 class="h3">Thank you! Your enquiry is in.</h2>
         <p>Our team will reach out shortly. For anything urgent, call us at
-          <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>.</p>
+          <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>
+          or <a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">message us on WhatsApp</a>.</p>
         <button class="btn btn-ghost" (click)="resetForm()">Send another enquiry</button>
       </div>
     } @else {
@@ -80,7 +81,8 @@
         @if (state() === 'error') {
           <div class="inline-error">
             Something went wrong sending your enquiry. Please try again, or call
-            <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>.
+            <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>
+            or <a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">reach us on WhatsApp</a>.
           </div>
         }
 
@@ -96,12 +98,16 @@
   <aside class="info-panel" appReveal="right">
     <h2 class="h3">Contact details</h2>
     <ul class="info-list">
-      <li><span>Call</span><a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a></li>
+      <li>
+        <span>Call</span>
+        <div class="contact-actions">
+          <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>
+        </div>
+      </li>
       @if (site.phone2) {
         <li><span></span><a [href]="'tel:' + site.phone2.replaceAll(' ', '')">{{ site.phone2 }}</a></li>
       }
       <li><span>Email</span><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
-      <li><span>WhatsApp</span><a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">Chat with us</a></li>
     </ul>
 
     <h3 class="info-sub">Our offices</h3>
