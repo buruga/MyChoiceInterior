@@ -1,0 +1,44 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/materials/hardware.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Materials &amp; Brand Partners</p>
+    <h1 class="h1">Quality you can name, grade by grade</h1>
+    <p class="lead">
+      Great interiors are only as good as what’s inside them. We work exclusively with reputed brands
+      and proven material grades across every type of interior work.
+    </p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="mat-list">
+    @for (m of materials; track m.category; let odd = $odd) {
+      <article class="mat-row" [class.rev]="odd" [appReveal]="odd ? 'right' : 'left'">
+        <div class="mat-media"><img [src]="m.image" [alt]="m.category" loading="lazy" /></div>
+        <div class="mat-info">
+          <h2 class="h3">{{ m.category }}</h2>
+          <p class="grade">{{ m.grade }}</p>
+          <p class="note">{{ m.note }}</p>
+          <div class="brands">
+            @for (b of m.brands; track b) { <span class="chip">{{ b }}</span> }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section bg-ink assurance">
+  <div class="container assurance-inner" appReveal>
+    <h2 class="h2">Every grade &amp; brand is shared upfront</h2>
+    <p class="lead">
+      Before a single panel is cut, you receive an itemised specification of the exact grades and
+      brands going into your home — matched to your chosen package. That’s our transparency promise.
+    </p>
+  </div>
+</section>
+
+<app-cta-band
+  eyebrow="See It In Your Package"
+  heading="Compare material grades across packages"
+  primaryLabel="Get a Free Consultation" />

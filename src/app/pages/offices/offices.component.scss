@@ -1,0 +1,20 @@
+:host { display: block; }
+
+.office {
+  background: var(--clr-surface); border-radius: var(--radius); padding: var(--sp-6);
+  box-shadow: var(--shadow-sm); border-top: 3px solid var(--clr-gold);
+}
+.office-head { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-3); }
+.addr { color: var(--clr-muted); margin-bottom: var(--sp-5); }
+.office-contact { display: flex; flex-direction: column; gap: var(--sp-3); margin-bottom: var(--sp-5); }
+.office-contact li { display: flex; gap: var(--sp-4); font-size: 0.95rem; }
+.office-contact span { width: 64px; color: var(--clr-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding-top: 2px; }
+.office-contact a { font-weight: 600; color: var(--clr-ink); }
+.office-contact a:hover { color: var(--clr-gold-deep); }
+.office-contact .phones { display: flex; flex-direction: column; gap: 2px; }
+.office-contact .phones a { white-space: nowrap; }
+.office-contact .person { color: var(--clr-ink); }
+
+.band { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-6); flex-wrap: wrap; }
+.band .h2 { color: #fff; }
+.band .lead { color: rgba(255,255,255,0.8); max-width: 520px; }

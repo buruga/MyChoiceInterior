@@ -1,0 +1,93 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/packages/luxury.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Packages &amp; Pricing</p>
+    <h1 class="h1">Choose a package. See exactly what’s inside.</h1>
+    <p class="lead">
+      Every tier lists the precise material grade and brand for each component — so you always know
+      the quality you’re paying for. No hidden substitutions, ever.
+    </p>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="section container">
+  <div class="grid grid-3 pkg-grid" appReveal="stagger">
+    @for (p of packages; track p.id) {
+      <div class="pkg" [class.featured]="p.featured">
+        @if (p.featured) { <span class="flag">Most Popular</span> }
+        <div class="pkg-img"><img [src]="p.image" [alt]="p.name + ' package interior'" loading="lazy" /></div>
+        <div class="pkg-body">
+          <h2 class="h3">{{ p.name }}</h2>
+          <p class="note">{{ p.priceNote }}</p>
+          <p class="tag">{{ p.tagline }}</p>
+
+          <h4 class="mini">What’s included</h4>
+          <ul class="highlights">
+            @for (h of p.highlights; track h) { <li>{{ h }}</li> }
+          </ul>
+
+          <h4 class="mini">Materials &amp; brands</h4>
+          <ul class="mats">
+            @for (m of p.materials; track m.category) {
+              <li>
+                <span class="cat">{{ m.category }}</span>
+                <span class="val"><strong>{{ m.brand }}</strong><em>{{ m.grade }}</em></span>
+              </li>
+            }
+          </ul>
+
+          <a routerLink="/contact" [queryParams]="{ package: p.name }" class="btn btn-gold pkg-cta">
+            {{ p.ctaLabel }}
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Side-by-Side</p>
+      <h2 class="h2">Compare materials &amp; brands by tier</h2>
+    </div>
+    <div class="table-wrap" appReveal>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Component</th>
+            @for (p of packages; track p.id) {
+              <th [class.hl]="p.featured">{{ p.name }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (cat of categories; track cat) {
+            <tr>
+              <td class="cat">{{ cat }}</td>
+              @for (p of packages; track p.id; let i = $index) {
+                <td [class.hl]="p.featured">{{ brandFor(i, cat) }}</td>
+              }
+            </tr>
+          }
+          <tr class="cta-row">
+            <td></td>
+            @for (p of packages; track p.id) {
+              <td [class.hl]="p.featured">
+                <a routerLink="/contact" [queryParams]="{ package: p.name }" class="btn btn-ghost">Enquire</a>
+              </td>
+            }
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<app-cta-band
+  eyebrow="Not Sure Which Fits?"
+  heading="We’ll help you pick the right package"
+  sub="Share your budget and requirements — we’ll recommend the best tier and give you a transparent, itemised quote."
+  primaryLabel="Talk to a Designer" />

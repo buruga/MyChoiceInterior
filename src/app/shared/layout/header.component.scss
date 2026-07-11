@@ -1,0 +1,230 @@
+:host { display: block; }
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 300;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), height 0.4s var(--ease);
+  background: transparent;
+}
+
+.site-header.scrolled {
+  background: rgba(251, 249, 245, 0.9);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--clr-line);
+}
+
+.header-spacer { height: var(--header-h); }
+
+.bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-serif);
+}
+.brand .mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--clr-gold), var(--clr-gold-deep));
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-family: var(--font-sans);
+}
+.brand .name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--clr-ink);
+  line-height: 1;
+  white-space: nowrap;
+}
+.brand .name em { color: var(--clr-gold-deep); font-style: italic; }
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.55rem;
+  min-width: 0;
+}
+.nav-desktop a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clr-ink-soft);
+  position: relative;
+  transition: color 0.25s var(--ease);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-desktop a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 2px;
+  background: var(--clr-gold);
+  transition: width 0.3s var(--ease);
+}
+.nav-desktop a:hover, .nav-desktop a.active { color: var(--clr-ink); }
+.nav-desktop a:hover::after, .nav-desktop a.active::after { width: 100%; }
+
+/* Transparent (top-of-page) state sits over a dark hero — use light text */
+.site-header:not(.scrolled):not(.open) .brand .name { color: #fff; }
+.site-header:not(.scrolled):not(.open) .brand .name em { color: var(--clr-gold-soft); }
+.site-header:not(.scrolled):not(.open) .nav-desktop a { color: rgba(255, 255, 255, 0.9); }
+.site-header:not(.scrolled):not(.open) .nav-desktop a:hover,
+.site-header:not(.scrolled):not(.open) .nav-desktop a.active { color: #fff; }
+.site-header:not(.scrolled):not(.open) .call { color: #fff; }
+.site-header:not(.scrolled):not(.open) .call svg { color: var(--clr-gold-soft); }
+.site-header:not(.scrolled):not(.open) .burger span { background: #fff; }
+
+.actions { display: flex; align-items: center; gap: var(--sp-2); flex-shrink: 0; }
+.call {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--clr-ink);
+}
+.call svg { color: var(--clr-gold-deep); flex-shrink: 0; }
+.call span { display: none; white-space: nowrap; }
+
+.desktop-cta {
+  padding: 0.55rem 1rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 1080px) and (max-width: 1320px) {
+  .brand .mark { width: 36px; height: 36px; }
+  .brand .name { font-size: 1.05rem; }
+  .nav-desktop a { font-size: 0.74rem; }
+}
+
+@media (min-width: 1321px) {
+  .nav-desktop a { font-size: 0.85rem; }
+  .nav-desktop { gap: 0.35rem 0.85rem; }
+  .brand .name { font-size: 1.35rem; }
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  position: relative;
+  z-index: 1;
+}
+.burger span {
+  width: 24px; height: 2px;
+  background: var(--clr-ink);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+@media (min-width: 1200px) {
+  .call span { display: inline; }
+}
+
+@media (max-width: 1079px) {
+  .nav-desktop { display: none; }
+  .desktop-cta { display: none; }
+  .burger { display: flex; }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    border: none;
+    background: rgba(23, 20, 15, 0.5);
+    animation: fadeIn 0.3s var(--ease) both;
+  }
+
+  .nav-mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(320px, 88vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    background: #fff;
+    box-shadow: -8px 0 32px rgba(23, 20, 15, 0.15);
+    padding: calc(var(--header-h) + var(--sp-5)) var(--sp-6) var(--sp-6);
+    z-index: 260;
+    overflow-y: auto;
+    animation: slideIn 0.35s var(--ease) both;
+  }
+
+  .nav-mobile a {
+    font-size: 1.15rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--clr-ink);
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--clr-line);
+    text-decoration: none;
+  }
+  .nav-mobile a:hover,
+  .nav-mobile a.active { color: var(--clr-gold-deep); }
+
+  .nav-phone {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--clr-line);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-gold-deep);
+    border-bottom: none;
+  }
+
+  .nav-cta {
+    margin-top: var(--sp-5);
+    text-align: center;
+    border-bottom: none;
+  }
+
+  /* Solid white header bar while mobile menu is open */
+  .site-header.open {
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--clr-line);
+  }
+  .site-header.open .brand .name { color: var(--clr-ink); }
+  .site-header.open .brand .name em { color: var(--clr-gold-deep); }
+  .site-header.open .call { color: var(--clr-ink); }
+  .site-header.open .call svg { color: var(--clr-gold-deep); }
+  .site-header.open .burger span { background: var(--clr-ink); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+
+.site-header.open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-header.open .burger span:nth-child(2) { opacity: 0; }
+.site-header.open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }

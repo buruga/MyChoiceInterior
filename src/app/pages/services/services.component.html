@@ -1,0 +1,61 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/gallery/work-006.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Our Services</p>
+    <h1 class="h1">Everything your home needs, under one roof</h1>
+    <p class="lead">
+      From the first design sketch to the final handover — and even the move-in — we take complete
+      ownership so you deal with one trusted team, not a dozen contractors.
+    </p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="section-head" appReveal>
+    <p class="eyebrow">Core Interior Services</p>
+    <h2 class="h2">Designed, built and finished by us</h2>
+  </div>
+  <div class="grid grid-3" appReveal="stagger">
+    @for (s of core; track s.id) {
+      <article class="svc">
+        <div class="svc-img"><img [src]="s.image" [alt]="s.name" loading="lazy" /></div>
+        <div class="svc-body">
+          <h3 class="h3">{{ s.name }}</h3>
+          <p>{{ s.description }}</p>
+          <ul class="tags">
+            @for (h of s.highlights; track h) { <li>{{ h }}</li> }
+          </ul>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Allied &amp; Value-Added Services</p>
+      <h2 class="h2">One-stop assistance — from interiors to moving in</h2>
+      <p class="lead text-muted">
+        Beyond interiors, we connect you with our best, trusted references so your entire home setup
+        is handled seamlessly.
+      </p>
+    </div>
+    <div class="grid grid-3" appReveal="stagger">
+      @for (a of allied; track a.id) {
+        <article class="allied">
+          <img [src]="a.image" [alt]="a.name" loading="lazy" />
+          <div class="allied-body">
+            <h3 class="h3">{{ a.name }}</h3>
+            <p>{{ a.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-band
+  eyebrow="Ready to Begin?"
+  heading="Tell us about your space"
+  primaryLabel="Request a Free Consultation" />

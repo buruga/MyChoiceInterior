@@ -1,0 +1,119 @@
+<section class="page-hero short">
+  <div class="page-hero-bg" style="background-image: url('/images/hero/hero-2.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Get In Touch</p>
+    <h1 class="h1">Let’s design your dream home</h1>
+    <p class="lead">Book a free consultation. Tell us a little about your space and we’ll take it from there.</p>
+  </div>
+</section>
+
+<section class="section container contact-grid">
+  <!-- FORM -->
+  <div class="form-panel" appReveal="left">
+    @if (state() === 'success') {
+      <div class="result success">
+        <div class="result-icon">✓</div>
+        <h2 class="h3">Thank you! Your enquiry is in.</h2>
+        <p>Our team will reach out shortly. For anything urgent, call us at
+          <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>.</p>
+        <button class="btn btn-ghost" (click)="resetForm()">Send another enquiry</button>
+      </div>
+    } @else {
+      <h2 class="h3 form-title">Request a free consultation</h2>
+      <p class="form-sub">Fields marked <span class="req">*</span> are required.</p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="field">
+          <label for="name">Name <span class="req">*</span></label>
+          <input id="name" type="text" formControlName="name" placeholder="Your full name"
+            [class.err]="invalid('name')" />
+          @if (invalid('name')) { <small class="msg">Please enter your name.</small> }
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input id="phone" type="tel" formControlName="phone" placeholder="+91 98765 43210"
+              [class.err]="invalid('phone')" />
+            @if (invalid('phone')) { <small class="msg">Enter a valid phone number.</small> }
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" placeholder="you@example.com"
+              [class.err]="invalid('email')" />
+            @if (invalid('email')) { <small class="msg">Enter a valid email.</small> }
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="service">Service of interest</label>
+            <select id="service" formControlName="serviceInterest">
+              <option value="">Select a service</option>
+              @for (g of serviceGroups; track g.label) {
+                <optgroup [label]="g.label">
+                  @for (o of g.options; track o) { <option [value]="o">{{ o }}</option> }
+                </optgroup>
+              }
+            </select>
+          </div>
+          <div class="field">
+            <label for="package">Package of interest</label>
+            <select id="package" formControlName="packageInterest">
+              <option value="">Select a package</option>
+              @for (p of packages; track p) { <option [value]="p">{{ p }}</option> }
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" formControlName="message"
+            placeholder="Tell us about your home, rooms, timeline or budget…"></textarea>
+        </div>
+
+        <!-- Honeypot: hidden from users, catches bots -->
+        <div class="hp" aria-hidden="true">
+          <label>Company<input type="text" formControlName="company" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        @if (state() === 'error') {
+          <div class="inline-error">
+            Something went wrong sending your enquiry. Please try again, or call
+            <a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a>.
+          </div>
+        }
+
+        <button type="submit" class="btn btn-gold submit" [disabled]="state() === 'submitting'">
+          @if (state() === 'submitting') { <span class="spinner"></span> Sending… }
+          @else { Send Enquiry }
+        </button>
+      </form>
+    }
+  </div>
+
+  <!-- DETAILS -->
+  <aside class="info-panel" appReveal="right">
+    <h2 class="h3">Contact details</h2>
+    <ul class="info-list">
+      <li><span>Call</span><a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a></li>
+      @if (site.phone2) {
+        <li><span></span><a [href]="'tel:' + site.phone2.replaceAll(' ', '')">{{ site.phone2 }}</a></li>
+      }
+      <li><span>Email</span><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+      <li><span>WhatsApp</span><a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">Chat with us</a></li>
+    </ul>
+
+    <h3 class="info-sub">Our offices</h3>
+    <ul class="office-list">
+      @for (o of offices; track o.name) {
+        <li>
+          <strong>{{ o.name }}</strong>
+          <span>{{ o.address }}</span>
+          <a [href]="'tel:' + o.phone.replaceAll(' ', '')">{{ o.phone }}</a>
+          @if (o.phone2) { <a [href]="'tel:' + o.phone2.replaceAll(' ', '')">{{ o.phone2 }}</a> }
+        </li>
+      }
+    </ul>
+  </aside>
+</section>

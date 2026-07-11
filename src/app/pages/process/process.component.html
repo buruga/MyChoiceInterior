@@ -1,0 +1,47 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/services/ceiling.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">How We Work</p>
+    <h1 class="h1">A calm, transparent journey to your dream home</h1>
+    <p class="lead">
+      No chaos, no guesswork. Just a clear, four-step process backed by constant communication and
+      support that lasts well beyond handover.
+    </p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="steps" appReveal="stagger">
+    @for (s of site.process; track s.step) {
+      <div class="step">
+        <span class="num">{{ s.step }}</span>
+        <div class="step-body">
+          <h2 class="h3">{{ s.title }}</h2>
+          <p>{{ s.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Our Promise</p>
+      <h2 class="h2">Support at every step — and after</h2>
+    </div>
+    <div class="grid grid-2" appReveal="stagger">
+      @for (c of supports; track c.title) {
+        <div class="support-card">
+          <h3 class="h3">{{ c.title }}</h3>
+          <p>{{ c.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-band
+  eyebrow="Let’s Get Started"
+  heading="Your journey begins with a conversation"
+  primaryLabel="Book a Free Consultation" />

@@ -1,0 +1,76 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/portfolio/p3.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Our Portfolio</p>
+    <h1 class="h1">Homes we’ve designed &amp; delivered</h1>
+    <p class="lead">
+      A selection of our recent work. Filter by room or style to explore the spaces closest to your
+      own project.
+    </p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="filters" appReveal>
+    <div class="filter-group">
+      <span class="flabel">Room</span>
+      <div class="chips">
+        @for (r of roomTypes; track r) {
+          <button class="fchip" [class.on]="room() === r" (click)="setRoom(r)">{{ r }}</button>
+        }
+      </div>
+    </div>
+    <div class="filter-group">
+      <span class="flabel">Style</span>
+      <div class="chips">
+        @for (s of styles; track s) {
+          <button class="fchip" [class.on]="style() === s" (click)="setStyle(s)">{{ s }}</button>
+        }
+      </div>
+    </div>
+  </div>
+
+  @if (filtered().length) {
+    <div class="gallery">
+      @for (p of filtered(); track p.id) {
+        <button class="tile" (click)="open(p)">
+          <img [src]="p.cover" [alt]="p.name" loading="lazy" />
+          <span class="tile-meta">
+            <span class="chip">{{ p.roomType }} · {{ p.style }}</span>
+            <strong>{{ p.name }}</strong>
+            <em>{{ p.location }}</em>
+          </span>
+        </button>
+      }
+    </div>
+  } @else {
+    <p class="empty">No projects match those filters yet — try a different combination.</p>
+  }
+</section>
+
+<app-cta-band
+  eyebrow="Your Home Next?"
+  heading="Let’s add your project to this gallery"
+  primaryLabel="Start Your Project" />
+
+@if (active(); as p) {
+  <div class="lightbox" (click)="close()">
+    <button class="lb-close" (click)="close()" aria-label="Close">&times;</button>
+    <div class="lb-inner" (click)="$event.stopPropagation()">
+      <div class="lb-stage">
+        <button class="lb-nav prev" (click)="prevImg()" aria-label="Previous">&#8249;</button>
+        <img [src]="p.gallery[activeImg()]" [alt]="p.name" />
+        <button class="lb-nav next" (click)="nextImg()" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="lb-info">
+        <div>
+          <span class="chip">{{ p.roomType }} · {{ p.style }}</span>
+          <h3 class="h3">{{ p.name }}</h3>
+          <p class="loc">{{ p.location }}</p>
+        </div>
+        <p class="desc">{{ p.description }}</p>
+        <span class="count">{{ activeImg() + 1 }} / {{ p.gallery.length }}</span>
+      </div>
+    </div>
+  </div>
+}

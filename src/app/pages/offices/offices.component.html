@@ -1,0 +1,49 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/offices/office-1.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">Our Offices</p>
+    <h1 class="h1">Come say hello</h1>
+    <p class="lead">
+      Drop by any of our studios for a coffee and a conversation about your home. Every branch has a
+      dedicated design team ready to help.
+    </p>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="grid grid-2" appReveal="stagger">
+    @for (o of offices; track o.name) {
+      <article class="office">
+        <div class="office-head">
+          <h2 class="h3">{{ o.name }}</h2>
+          @if (o.isHeadOffice) { <span class="chip">Head Office</span> }
+        </div>
+        <p class="addr">{{ o.address }}</p>
+        <ul class="office-contact">
+          @if (o.contactPerson) {
+            <li><span>Contact</span><strong class="person">{{ o.contactPerson }}</strong></li>
+          }
+          <li>
+            <span>Phone</span>
+            <span class="phones">
+              <a [href]="tel(o.phone)">{{ o.phone }}</a>
+              @if (o.phone2) { <a [href]="tel(o.phone2)">{{ o.phone2 }}</a> }
+            </span>
+          </li>
+          <li><span>Email</span><a [href]="'mailto:' + o.email">{{ o.email }}</a></li>
+        </ul>
+        <a [href]="o.mapUrl" target="_blank" rel="noopener" class="btn btn-ghost">View on Map &rarr;</a>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section bg-ink">
+  <div class="container band" appReveal>
+    <div>
+      <h2 class="h2">Prefer we come to you?</h2>
+      <p class="lead">Book a free home visit and consultation — our designers will measure up and share ideas on the spot.</p>
+    </div>
+    <a routerLink="/contact" class="btn btn-gold">Request a Home Visit</a>
+  </div>
+</section>

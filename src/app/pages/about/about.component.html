@@ -1,0 +1,70 @@
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/hero/about-hero.jpg')"></div>
+  <div class="container page-hero-inner" appReveal>
+    <p class="eyebrow center">About My Choice Interior</p>
+    <h1 class="h1">We turn houses into homes that feel like you</h1>
+    <p class="lead">
+      For over a decade, we’ve designed and delivered interiors that balance beauty, function and
+      value — for families across India.
+    </p>
+  </div>
+</section>
+
+<section class="section container story">
+  <div class="story-text" appReveal="left">
+    <p class="eyebrow">Our Story</p>
+    <h2 class="h2">Design that respects your time, budget and trust</h2>
+    <p>
+      My Choice Interior began with a simple belief: getting your home done shouldn’t be stressful.
+      Too many families juggle carpenters, vendors and unclear quotes. We changed that by bringing
+      design, premium materials and execution under one accountable roof.
+    </p>
+    <p>
+      Today, our studio blends thoughtful design with factory-grade precision — and backs every
+      project with transparent pricing, regular updates and lasting post-work support.
+    </p>
+  </div>
+  <div class="story-media" appReveal="right">
+    <img src="images/gallery/work-005.jpg" alt="Beautifully designed bedroom interior" loading="lazy" />
+  </div>
+</section>
+
+<section class="section bg-alt">
+  <div class="container mv">
+    <div class="mv-card" appReveal="left">
+      <p class="eyebrow">Our Mission</p>
+      <p class="mv-text">To make premium, transparent, on-time interior design accessible to every home — with quality you can name and trust you can feel.</p>
+    </div>
+    <div class="mv-card" appReveal="right">
+      <p class="eyebrow">Our Vision</p>
+      <p class="mv-text">To be India’s most trusted interior partner — the studio families recommend for craftsmanship, honesty and care that lasts beyond handover.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="stats-row" appReveal="stagger">
+    @for (s of site.stats; track s.label) {
+      <div class="stat"><strong>{{ s.value }}</strong><span>{{ s.label }}</span></div>
+    }
+  </div>
+</section>
+
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">What We Stand For</p>
+      <h2 class="h2">Our values</h2>
+    </div>
+    <div class="grid grid-4" appReveal="stagger">
+      @for (v of values; track v.title) {
+        <div class="value-card">
+          <h3 class="h3">{{ v.title }}</h3>
+          <p>{{ v.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-band />

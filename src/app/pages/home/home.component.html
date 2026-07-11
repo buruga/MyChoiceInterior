@@ -1,0 +1,207 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <p class="eyebrow center hero-eyebrow">Bespoke Interior Design Studio</p>
+    <h1 class="display">Interiors designed<br /><em>around the way you live.</em></h1>
+    <p class="lead hero-lead">
+      From modular kitchens to full-home turnkey interiors — premium graded materials, trusted brand
+      partners, transparent packages and on-time delivery, all under one roof.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/contact" class="btn btn-gold">Get a Free Consultation</a>
+      <a routerLink="/gallery" class="btn btn-light">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      @for (s of site.stats; track s.label) {
+        <div class="stat"><strong>{{ s.value }}</strong><span>{{ s.label }}</span></div>
+      }
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- INTRO -->
+<section class="section container intro">
+  <div class="intro-text" appReveal="left">
+    <p class="eyebrow">Who We Are</p>
+    <h2 class="h2">A design studio obsessed with detail, delivery and trust.</h2>
+    <p class="lead">
+      My Choice Interior is a full-service interior design and execution studio. We handle everything
+      — design, materials, modular work, and finishing — so you get a beautiful home without the
+      chaos of coordinating a dozen vendors.
+    </p>
+    <ul class="intro-points">
+      <li>Transparent packages with material grades &amp; brands</li>
+      <li>Dedicated project manager &amp; regular updates</li>
+      <li>Post-work maintenance support &amp; assistance</li>
+    </ul>
+    <a routerLink="/about" class="btn btn-ghost">More About Us</a>
+  </div>
+  <div class="intro-media" appReveal="right">
+    <img src="images/services/living.jpg" alt="Elegant modern living room interior" loading="lazy" />
+    <div class="intro-badge">
+      <strong>12+ yrs</strong>
+      <span>of crafting homes</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">What We Do</p>
+      <h2 class="h2">Complete interior solutions</h2>
+      <p class="lead text-muted">Every room, every detail — designed and delivered by one accountable team.</p>
+    </div>
+    <div class="grid grid-3" appReveal="stagger">
+      @for (s of services; track s.id) {
+        <a routerLink="/services" class="svc-card">
+          <div class="svc-img"><img [src]="s.image" [alt]="s.name" loading="lazy" /></div>
+          <div class="svc-body">
+            <h3 class="h3">{{ s.name }}</h3>
+            <p>{{ s.description }}</p>
+            <span class="link-arrow">Explore &rarr;</span>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="center-cta"><a routerLink="/services" class="btn btn-primary">View All Services</a></div>
+  </div>
+</section>
+
+<!-- PACKAGES PREVIEW -->
+<section class="section container">
+  <div class="section-head center" appReveal>
+    <p class="eyebrow center">Transparent Pricing</p>
+    <h2 class="h2">Three packages, zero surprises</h2>
+    <p class="lead text-muted">
+      Each package lists the exact material grade and brands included — so you always know what you’re paying for.
+    </p>
+  </div>
+  <div class="grid grid-3 pkg-grid" appReveal="stagger">
+    @for (p of packages; track p.id) {
+      <div class="pkg-card" [class.featured]="p.featured">
+        @if (p.featured) { <span class="pkg-flag">Most Popular</span> }
+        <div class="pkg-img"><img [src]="p.image" [alt]="p.name + ' interior package'" loading="lazy" /></div>
+        <div class="pkg-body">
+          <h3 class="h3">{{ p.name }}</h3>
+          <p class="pkg-tag">{{ p.tagline }}</p>
+          <ul class="pkg-mats">
+            @for (m of p.materials.slice(0, 3); track m.category) {
+              <li><span>{{ m.category }}</span><strong>{{ m.brand }}</strong></li>
+            }
+          </ul>
+          <a routerLink="/packages" class="btn btn-ghost pkg-btn">Compare Packages</a>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- WHY US / TRUST -->
+<section class="section bg-ink why">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Why My Choice Interior</p>
+      <h2 class="h2">Built on trust, delivered on time</h2>
+    </div>
+    <div class="grid grid-3" appReveal="stagger">
+      @for (t of site.trust; track t.title) {
+        <div class="trust-card">
+          <div class="trust-icon">{{ t.title[0] }}</div>
+          <h3 class="h3">{{ t.title }}</h3>
+          <p>{{ t.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section container">
+  <div class="section-head center" appReveal>
+    <p class="eyebrow center">How It Works</p>
+    <h2 class="h2">A calm, four-step journey</h2>
+  </div>
+  <div class="grid grid-4 proc" appReveal="stagger">
+    @for (step of site.process; track step.step) {
+      <div class="proc-step">
+        <span class="proc-num">{{ step.step }}</span>
+        <h3 class="h3">{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- FEATURED GALLERY -->
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Our Work</p>
+      <h2 class="h2">Interiors we’ve crafted</h2>
+    </div>
+    <div class="proj-grid" appReveal="stagger">
+      @for (item of gallery; track item.id) {
+        <a routerLink="/gallery" class="proj-card">
+          <img [src]="'/' + item.image" [alt]="item.description" loading="lazy" />
+          <div class="proj-meta">
+            <span class="chip">{{ item.roomType }}</span>
+            <h3 class="h3">{{ item.roomType }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </a>
+      }
+    </div>
+    <div class="center-cta"><a routerLink="/gallery" class="btn btn-primary">See Full Gallery</a></div>
+  </div>
+</section>
+
+<!-- MATERIALS PREVIEW -->
+<section class="section container">
+  <div class="section-head center" appReveal>
+    <p class="eyebrow center">Materials &amp; Brand Partners</p>
+    <h2 class="h2">Only reputed brands, only proven grades</h2>
+    <p class="lead text-muted">We deal with India’s most trusted brands across every category of interior work.</p>
+  </div>
+  <div class="grid grid-4" appReveal="stagger">
+    @for (m of materials; track m.category) {
+      <div class="mat-card">
+        <img [src]="m.image" [alt]="m.category" loading="lazy" />
+        <div class="mat-body">
+          <h3 class="h3">{{ m.category }}</h3>
+          <p class="mat-grade">{{ m.grade }}</p>
+          <p class="mat-brands">{{ m.brands.join(' · ') }}</p>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="center-cta"><a routerLink="/materials" class="btn btn-primary">Explore Materials &amp; Brands</a></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section bg-alt">
+  <div class="container">
+    <div class="section-head center" appReveal>
+      <p class="eyebrow center">Client Love</p>
+      <h2 class="h2">Trusted by 850+ happy homes in Hyderabad</h2>
+    </div>
+    <div class="grid grid-3" appReveal="stagger">
+      @for (t of testimonials; track t.name) {
+        <figure class="tst-card">
+          <div class="stars" aria-hidden="true">@for (s of stars(t.rating); track $index) {<span>★</span>}</div>
+          <blockquote>“{{ t.quote }}”</blockquote>
+          <figcaption>
+            <img [src]="t.photo" [alt]="t.name" loading="lazy" />
+            <span><strong>{{ t.name }}</strong><em>{{ t.project }}</em></span>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-band />

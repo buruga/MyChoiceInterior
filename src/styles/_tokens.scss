@@ -1,0 +1,55 @@
+:root {
+  /* Brand palette — warm, elegant, premium */
+  --clr-ink: #17140f;
+  --clr-ink-soft: #3d372e;
+  --clr-charcoal: #221f1a;
+  --clr-bg: #fbf9f5;
+  --clr-bg-alt: #f3efe7;
+  --clr-surface: #ffffff;
+  --clr-line: #e6dfd2;
+
+  --clr-gold: #b08d57;
+  --clr-gold-deep: #8c6d3f;
+  --clr-gold-soft: #d9c3a1;
+  --clr-terracotta: #b5674b;
+
+  --clr-muted: #7c7367;
+  --clr-white: #ffffff;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-hero: clamp(2.75rem, 6vw, 5.25rem);
+  --fs-h1: clamp(2.25rem, 4.5vw, 3.75rem);
+  --fs-h2: clamp(1.85rem, 3.4vw, 2.85rem);
+  --fs-h3: clamp(1.3rem, 2.2vw, 1.75rem);
+  --fs-lead: clamp(1.05rem, 1.5vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.78rem;
+
+  /* Spacing scale */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  /* Radii + shadows */
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 26px;
+  --shadow-sm: 0 6px 18px rgba(23, 20, 15, 0.06);
+  --shadow: 0 18px 48px rgba(23, 20, 15, 0.1);
+  --shadow-lg: 0 30px 80px rgba(23, 20, 15, 0.16);
+
+  --container: 1240px;
+  --header-h: 76px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

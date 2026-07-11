@@ -1,0 +1,57 @@
+.site-footer {
+  padding-block: var(--sp-9) var(--sp-6);
+  background: var(--clr-charcoal);
+  color: rgba(251, 249, 245, 0.72);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: var(--sp-6);
+  padding-bottom: var(--sp-7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.brand { display: inline-flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-4); }
+.brand .mark {
+  width: 40px; height: 40px; display: grid; place-items: center; border-radius: 11px;
+  background: linear-gradient(135deg, var(--clr-gold), var(--clr-gold-deep));
+  color: #fff; font-weight: 700; font-family: var(--font-sans);
+}
+.brand .name { font-family: var(--font-serif); font-size: 1.3rem; color: #fff; }
+.brand .name em { color: var(--clr-gold-soft); font-style: italic; }
+
+.about .text { max-width: 340px; font-size: 0.92rem; margin-bottom: var(--sp-5); }
+
+.socials { display: flex; gap: var(--sp-3); }
+.socials a {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff; font-weight: 700;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.socials a:hover { background: var(--clr-gold); border-color: var(--clr-gold); transform: translateY(-3px); }
+
+.col h4 {
+  color: #fff; font-family: var(--font-sans); font-size: 0.82rem;
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: var(--sp-4);
+}
+.col ul { display: flex; flex-direction: column; gap: var(--sp-3); }
+.col a { font-size: 0.92rem; transition: color 0.25s var(--ease); }
+.col a:hover { color: var(--clr-gold-soft); }
+.contact li { font-size: 0.92rem; line-height: 1.5; }
+.muted { color: rgba(255, 255, 255, 0.45); font-size: 0.85rem; }
+
+.bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-3);
+  padding-top: var(--sp-5); font-size: 0.85rem;
+}
+.legal a:hover { color: var(--clr-gold-soft); }
+
+@media (max-width: 900px) {
+  .top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .top { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,51 @@
+<footer class="site-footer bg-ink">
+  <div class="container">
+    <div class="top">
+      <div class="about">
+        <a routerLink="/" class="brand">
+          <span class="mark">MC</span>
+          <span class="name">My Choice <em>Interior</em></span>
+        </a>
+        <p class="text">{{ site.tagline }} Premium, end-to-end home interiors with transparent
+          material grades, trusted brand partners and on-time delivery.</p>
+        <div class="socials">
+          @for (s of site.socials; track s.label) {
+            <a [href]="s.url" target="_blank" rel="noopener" [attr.aria-label]="s.label">{{ s.label[0] }}</a>
+          }
+        </div>
+      </div>
+
+      <div class="col">
+        <h4>Explore</h4>
+        <ul>
+          @for (l of quickLinks; track l.path) {
+            <li><a [routerLink]="l.path">{{ l.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>Get in Touch</h4>
+        <ul class="contact">
+          <li><a [href]="'tel:' + site.phone.replaceAll(' ', '')">{{ site.phone }}</a></li>
+          <li><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+          <li><a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">WhatsApp us</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>Our Offices</h4>
+        <ul class="contact">
+          @for (o of offices; track o.name) {
+            <li>{{ o.name }}<br /><span class="muted">{{ o.phone }}</span></li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>© {{ year }} My Choice Interior. All rights reserved.</span>
+      <span class="powered-by">Powered by Buruga Technologies</span>
+    </div>
+  </div>
+</footer>
