@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SITE } from '../../data/site.data';
 
 @Component({
   selector: 'app-footer',
@@ -29,6 +30,10 @@ import { Component } from '@angular/core';
             <ul>
               <li><strong>Email:</strong> <a href="mailto:info&#64;mychoiceinterior.com">info&#64;mychoiceinterior.com</a></li>
               <li><strong>Phone:</strong> <a href="tel:+919963994485">+91 9963994485</a></li>
+              <li class="mobile-whatsapp">
+                <strong>WhatsApp:</strong>
+                <a [href]="'https://wa.me/' + site.whatsapp" target="_blank" rel="noopener">Chat with us</a>
+              </li>
               <li><strong>Address:</strong> 5-9-287/5/3, Prasanthi Nagar, Kukatpally, Hyderabad-500018</li>
             </ul>
           </div>
@@ -36,10 +41,10 @@ import { Component } from '@angular/core';
           <div class="footer-section">
             <h4>Follow Us</h4>
             <div class="social-links">
-              <a href="#" class="social-link">Facebook</a>
-              <a href="#" class="social-link">Instagram</a>
-              <a href="#" class="social-link">Pinterest</a>
-              <a href="#" class="social-link">LinkedIn</a>
+              <a href="https://www.facebook.com/rajesh.ganasala.77" class="social-link">Facebook</a>
+              <a href="https://www.instagram.com/rajesh.ganasala.77" class="social-link">Instagram</a>
+              <a href="https://x.com/RajGanasala" class="social-link">Twitter</a>
+              <a href="https://www.youtube.com/@rajeshganasala6695" class="social-link">Youtube</a>
             </div>
           </div>
         </div>
@@ -52,4 +57,6 @@ import { Component } from '@angular/core';
   `,
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent {}
+export class FooterComponent {
+  readonly site = SITE;
+}

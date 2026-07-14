@@ -81,10 +81,27 @@
   }
 }
 
+.mobile-whatsapp {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .mobile-whatsapp {
+    display: block;
+
+    a {
+      display: inline-block;
+      margin-left: 0.35rem;
+      color: #25d366;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   }
 
   .footer-bottom {

@@ -16,6 +16,13 @@
 [data-reveal='scale'] { transform: scale(0.94); }
 [data-reveal].is-visible { transform: none; }
 
+@media (max-width: 900px) {
+  [data-reveal='left'],
+  [data-reveal='right'] {
+    transform: translateY(24px);
+  }
+}
+
 /* Stagger children */
 [data-reveal-stagger] > * {
   opacity: 0;

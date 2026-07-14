@@ -44,14 +44,14 @@ export class TestimonialsComponent {
       id: 1,
       name: 'Sri Ram',
       company: 'Hyderabad',
-      message: 'MyChoiceInterior exceeded our expectations. Their team delivered our project on time and with exceptional quality.',
+      message: 'The design of each and every area of our house was just looking like awesome.....I am very very much satisfied with the efforts,suggestions for the best output...Very satisfied with the timely completion of the work.Thank you so much Rajesh garu you made our house so excellent',
       rating: 5
     },
     {
       id: 2,
       name: 'Pawan Kumar',
       company: 'Madhapur, Hyderabad',
-      message: 'Professional, responsive, and incredibly talented workers. Highly recommended for any interior design project.',
+      message: 'Thank you so much for your thorough support and making my home special with a great looking..Always as I mentioned, works speak more than words.. hence proved..Hope you will continue to do that other clients 🙏',
       rating: 5
     },
     {

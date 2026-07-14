@@ -9,10 +9,10 @@ export const SITE: SiteInfo = {
   whatsapp: '919963994485',
   director: 'G. Rajesh',
   socials: [
-    { label: 'Instagram', url: 'https://instagram.com' },
-    { label: 'Facebook', url: 'https://facebook.com' },
-    { label: 'Pinterest', url: 'https://pinterest.com' },
-    { label: 'YouTube', url: 'https://youtube.com' },
+    { label: 'Instagram', url: 'https://www.instagram.com/rajesh.ganasala.77' },
+    { label: 'Facebook', url: 'https://www.facebook.com/rajesh.ganasala.77' },
+    { label: 'Twitter', url: 'https://x.com/RajGanasala' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@rajeshganasala6695' },
   ],
   stats: [
     { value: '850+', label: 'Homes Designed' },
